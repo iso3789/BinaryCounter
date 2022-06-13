@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # 2021 nr@bulme.at
-# Ivan Dzido
+# Ivan Dzido NWES
 
 from gpiozero import Button
 from PyQt5.QtCore import Qt, QObject, pyqtSignal
@@ -59,10 +59,12 @@ class Counter(QWidget):
         else: 
             self.count += 1
         self.lcd.display(self.count)
+        self.checker()
         
     def countReset(self):
         self.count = self.decMin
         self.lcd.display(self.decMin)
+        self.checker()
         
     def countDown(self):
         if (self.count == self.decMin):
@@ -70,6 +72,7 @@ class Counter(QWidget):
         else: 
             self.count -= 1
         self.lcd.display(self.count)
+        self.checker()
         
     def checker(self):
         for i in range(self.nrButtons):
